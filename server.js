@@ -13,7 +13,7 @@ app.get('/api/timestamp/:time?', (req, res) => {
     let check_time;
 
     if(time)
-     check_time = time.search(/((\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))|^\d+$)/);
+     check_time = time.search(/((\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))|^\d{5,}$)/);
 
     if(check_time === -1)
       throw("Invalid Date");
@@ -24,7 +24,7 @@ app.get('/api/timestamp/:time?', (req, res) => {
     res.json({unix: time_unix, utc: time_utc});
   } 
   catch (error) {
-    res.status(500).json({"unix": null, "utc" : error });
+    res.status(500).json({ error : error });
   }
 });
 
