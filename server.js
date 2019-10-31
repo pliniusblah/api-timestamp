@@ -10,7 +10,10 @@ app.get('/api/timestamp/:time?', (req, res) => {
   try {
     const { time } = req.params;
 
-    const check_time = time.search(/(\d{4}-\d{2}-\d{2}|[\d-]+)/g);
+    let check_time
+
+    if(time)
+     check_time = time.search(/(\d{4}-\d{2}-\d{2}|[\d-]+)/g);
 
     if(check_time === -1)
       throw("Invalid Date");
