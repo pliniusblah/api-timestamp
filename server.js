@@ -18,8 +18,8 @@ app.get('/api/timestamp/:time?', (req, res) => {
     if(check_time === -1)
       throw("Invalid Date");
 
-    time_unix = (time) ? new Date((time.search(/-/g) > -1) ? time : parseInt(time)).getTime() : new Date().getTime();
-    time_utc = (time) ? new Date((time.search(/-/g) > -1) ? time : parseInt(time)).toUTCString() : new Date().toUTCString();
+    let time_unix = (time) ? new Date((time.search(/-/g) > -1) ? time : parseInt(time)).getTime() : new Date().getTime();
+    let time_utc = (time) ? new Date((time.search(/-/g) > -1) ? time : parseInt(time)).toUTCString() : new Date().toUTCString();
 
     res.json({unix: time_unix, utc: time_utc})
   } 
