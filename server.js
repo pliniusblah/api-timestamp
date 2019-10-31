@@ -24,7 +24,7 @@ app.get('/api/timestamp/:time?', (req, res) => {
     res.json({unix: time_unix, utc: time_utc});
   } 
   catch (error) {
-    res.status(500).json({"error": error});  
+    res.status(500).json({"unix": null, "utc" : error });
   }
 });
 
